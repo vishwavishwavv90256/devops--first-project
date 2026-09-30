@@ -6,15 +6,15 @@ pipeline {
   }
 
   parameters {
-   choice{
-     name : "ENVIRONMENT",
-     choices : [ "Development,Testing,Production"],
-     description : "select deployment environment"
-   }
+   choice (
+     name : 'ENVIRONMENT',
+     choices : ['Development','Testing','Production'],
+     description : 'select deployment environment'
+   )
   }
 
   stages{
-    stage("Build"){
+    stage('Build'){
       steps{
         echo " Building the application..."
         echo " Building $(APP_NAME)"
@@ -24,7 +24,7 @@ pipeline {
       }
     }
    
-    stage ("Test"){
+    stage ('Test'){
       steps {
         echo " Testing the application..."
         echo " Testing $ (APP_NAME)"
@@ -32,7 +32,7 @@ pipeline {
       }
     }
 
-    stage ("Deploy"){
+    stage ('Deploy'){
       steps {
         echo " Building the applications.."
         echo " Deploying $(APP_NAME)"
